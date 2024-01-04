@@ -343,19 +343,24 @@ void playBattleship()
 
             cin >> cord;
         }
-        if (move == 2)
+        else if (move == 2)
         {
             cout << "Enter the topmost cordinate of your " << ships[i] << "(e.g., A1): ";
-            // string cord;
             cin >> cord;
+        }
+        else
+        {
+            i--;
+            continue;
         }
         if (valid_move(1, move, cord, i))
         {
             placeShips1(move, cord, 5 - i, shipSymbol[i].first);
+            displayGrid(playerGrid);
         }
-        else
+        else {
             i--;
-        displayGrid(playerGrid);
+        }
     }
     system("pause");
     system("cls");
@@ -376,10 +381,9 @@ void playBattleship()
             cout << "Enter the leftmost cordinate of your " << ships[i] << "(e.g., A1): ";
             cin >> cord;
         }
-        if (move == 2)
+        else if (move == 2)
         {
             cout << "Enter the topmost cordinate of your " << ships[i] << "(e.g., A1): ";
-            // string cord;
             cin >> cord;
         }
         else
@@ -390,10 +394,11 @@ void playBattleship()
         if (valid_move(2, move, cord, i))
         {
             placeShips2(move, cord, 5 - i, shipSymbol[i].first);
+            displayGrid(opponentGrid);
         }
-        else
+        else{
             i--;
-        displayGrid(opponentGrid);
+        }
     }
     system("pause");
     system("cls");
@@ -427,11 +432,6 @@ void playBattleship()
         cout << "Enter the coordinates (e.g., A1): ";
         string guess2;
         cin >> guess2;
-        // if(valid_guess2(guess2)){
-        //     update_grid_1(guess2);
-        // } else {
-        //     cin>>guess2;
-        // }
         while (!valid_guess2(guess2))
         {
             cin >> guess2;
@@ -441,6 +441,7 @@ void playBattleship()
         displayGrid(opponentGrid);
         cout << "Player 2 guess grid(* means miss, H means hit, . means no guess made for the cell yet)" << endl;
         displayGrid(opponentGridGuess);
+
         system("pause");
         system("cls");
 
@@ -463,4 +464,3 @@ int main()
     playBattleship();
     return 0;
 }
-
